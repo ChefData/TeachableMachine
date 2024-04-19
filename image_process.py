@@ -1,16 +1,22 @@
 import streamlit as st
 from keras.models import load_model as keras_load_model
+from keras.layers import DepthwiseConv2D
+from keras.utils.generic_utils import CustomObjectScope
 from PIL import Image, ImageOps
 import numpy as np
 import os
+
+# Define custom objects for loading the model
+custom_objects = {'DepthwiseConv2D': DepthwiseConv2D}
 
 # Load the Teachable Machine model
 def load_teachable_model():
     model_path = 'keras_model.h5'
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"Model file '{model_path}' not found.")
-    # Load the model using Keras
-    model = keras_load_model(model_path)
+    # Load the model using Keras with custom objects
+    with CustomObjectScope(custom_objects):
+        model = keras_load_model(model_path)
     return model
 
 # Function to preprocess the image
