@@ -51,4 +51,18 @@ def main():
     # Upload two images
     st.sidebar.title("Upload Images")
     image1 = st.sidebar.file_uploader("Upload First Image", type=['jpg', 'jpeg', 'png'])
-    image2 = st.sidebar.file_uploader("Upload Second Image", type=['jpg
+    image2 = st.sidebar.file_uploader("Upload Second Image", type=['jpg', 'jpeg', 'png'])
+
+    if image1 is not None and image2 is not None:
+        # Display the uploaded images
+        st.sidebar.image(image1, caption='First Image', use_column_width=True)
+        st.sidebar.image(image2, caption='Second Image', use_column_width=True)
+
+        # Make predictions when the user clicks the button
+        if st.sidebar.button("Predict"):
+            predictions = predict(model, Image.open(image1), Image.open(image2))
+            st.write("Prediction:", predictions)
+
+# Run the main function
+if __name__ == "__main__":
+    main()
