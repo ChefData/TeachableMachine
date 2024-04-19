@@ -1,2 +1,2 @@
-0 Hippo
-1 Zebra
+0 Class 1
+1 Class 2
