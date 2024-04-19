@@ -1,12 +1,12 @@
 import streamlit as st
-from keras.models import load_model
+from keras.models import load_model as keras_load_model
 from PIL import Image, ImageOps
 import numpy as np
 
 # Load the Teachable Machine model
-def load_model():
+def load_teachable_model():
     # Load the model using Keras
-    model = load_model('keras_model.h5')
+    model = keras_load_model('keras_model.h5')
     return model
 
 # Function to preprocess the image
@@ -38,7 +38,7 @@ def main():
     st.title("Teachable Machine with Two Inputs")
 
     # Load the Teachable Machine model
-    model = load_model()
+    model = load_teachable_model()
 
     # Upload two images
     st.sidebar.title("Upload Images")
