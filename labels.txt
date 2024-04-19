@@ -1,2 +1,2 @@
-0 Rubber Duck
-1 Viking Rubber Duck
+0 Hippo
+1 Zebra
