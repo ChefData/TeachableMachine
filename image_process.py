@@ -1,12 +1,12 @@
 import streamlit as st
-import tensorflow.keras
+from keras.models import load_model
 from PIL import Image, ImageOps
 import numpy as np
 
 # Load the Teachable Machine model
 def load_model():
-    # Load the model from Keras
-    model = tensorflow.keras.models.load_model('keras_model.h5')
+    # Load the model using Keras
+    model = load_model('keras_model.h5')
     return model
 
 # Function to preprocess the image
